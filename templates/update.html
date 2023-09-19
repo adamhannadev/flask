@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Upate Lesson #{{lesson.id}}</h1>
+    <form action="/update/{{lesson.id}}" method="POST">
+        <label for="plan">Lesson Plan</label>
+        <input type="text" name="plan" id="plan" value="{{lesson.plan}}">
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock %}

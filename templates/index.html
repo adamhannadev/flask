@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>The title here!</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Lessons</h1>
+    {% if lessons|length  < 1%}
+    <h1>There are no lessons. Enter one below.</h1>
+    {% else %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Lesson Date</th>
+            <th>Date Created</th>
+            <th>Plan</th>
+            <th>Paid?</th>
+        </tr>
+        {% for lesson in lessons %}
+            <tr>
+                <td>{{ lesson.id}}</td>
+                <td></td>
+                <td>{{ lesson.date_created.date() }}</td>
+                <td>{{ lesson.plan }}</td>
+                <!-- <td>{{ lesson.paid }}</td> -->
+                <td>
+                    <a href="/delete/{{lesson.id}}">Delete</a>
+                    <a href="/update/{{lesson.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+     {% endif %}
+    <form action="/" method="POST">
+        <label for="plan">Lesson Plan</label>
+        <input type="text" name="lesson_plan" id="lesson_plan">
+        <!-- <label for="lesson_date">Lesson Date</label>
+        <input type="datetime" name="lesson_date" id="lesson_date">
+        <label for="paid">Paid?</label>
+        <input type="checkbox" name="paid" id="paid"> -->
+        <input type="submit" value="Add Lesson">
+    </form>
+</div>
+{% endblock %}

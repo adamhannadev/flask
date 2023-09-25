@@ -1,6 +1,12 @@
 body {
     font-family:sans-serif;
 }
-table{
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.wrapper>table{
     border:1px solid black;
+    margin-left: auto;
+    margin-right: auto;
 }

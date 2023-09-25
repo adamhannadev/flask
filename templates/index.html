@@ -10,30 +10,32 @@
     {% if lessons|length  < 1%}
     <h1>There are no lessons. Enter one below.</h1>
     {% else %}
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Lesson Date</th>
-            <th>Date Created</th>
-            <th>Plan</th>
-            <th>Paid?</th>
-        </tr>
-        {% for lesson in lessons %}
+    <div class="wrapper">
+        <table>
             <tr>
-                <td>{{ lesson.id}}</td>
-                <td></td>
-                <td>{{ lesson.date_created.date() }}</td>
-                <td>{{ lesson.plan }}</td>
-                <!-- <td>{{ lesson.paid }}</td> -->
-                <td>
-                    <a href="/delete/{{lesson.id}}">Delete</a>
-                    <a href="/update/{{lesson.id}}">Update</a>
-                </td>
+                <th>ID</th>
+                <th>Lesson Date</th>
+                <th>Date Created</th>
+                <th>Plan</th>
+                <th>Paid?</th>
             </tr>
-        {% endfor %}
-    </table>
-     {% endif %}
-    <form action="/" method="POST">
+            {% for lesson in lessons %}
+                <tr>
+                    <td>{{ lesson.id}}</td>
+                    <td></td>
+                    <td>{{ lesson.date_created.date() }}</td>
+                    <td>{{ lesson.plan }}</td>
+                    <!-- <td>{{ lesson.paid }}</td> -->
+                    <td>
+                        <a href="/delete/{{lesson.id}}">Delete</a>
+                        <a href="/update/{{lesson.id}}">Update</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+    <form action="/" method="POST" class="wrapper">
         <label for="plan">Lesson Plan</label>
         <input type="text" name="lesson_plan" id="lesson_plan">
         <!-- <label for="lesson_date">Lesson Date</label>

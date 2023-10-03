@@ -17,15 +17,17 @@
                 <th>Lesson Date</th>
                 <th>Date Created</th>
                 <th>Plan</th>
-                <th>Paid?</th>
+                <th>Student</th>
+                <th>Paid</th>
             </tr>
             {% for lesson in lessons %}
                 <tr>
-                    <td>{{ lesson.id}}</td>
-                    <td></td>
-                    <td>{{ lesson.date_created.date() }}</td>
+                    <td>{{ lesson.rowid}}</td>
+                    <td> {{ lesson.lesson_date }}</td>
+                    <td>{{ lesson.created_at }}</td>
                     <td>{{ lesson.plan }}</td>
-                    <!-- <td>{{ lesson.paid }}</td> -->
+                    <td>{{ lesson.student }}</td>
+                    <td>{{ lesson.paid }}</td>
                     <td>
                         <a href="/delete/{{lesson.id}}">Delete</a>
                         <a href="/update/{{lesson.id}}">Update</a>
@@ -35,13 +37,15 @@
         </table>
     </div>
     {% endif %}
-    <form action="/" method="POST" class="wrapper">
-        <label for="plan">Lesson Plan</label>
-        <input type="text" name="lesson_plan" id="lesson_plan">
-        <!-- <label for="lesson_date">Lesson Date</label>
-        <input type="datetime" name="lesson_date" id="lesson_date">
+    <form action="/" method="POST">
+        <label for="lesson_plan">Lesson Plan</label>
+        <input type="text" name="lesson_plan">
+        <label for="lesson_date">Lesson Date</label>
+        <input type="datetime" name="lesson_date">
         <label for="paid">Paid?</label>
-        <input type="checkbox" name="paid" id="paid"> -->
+        <input type="checkbox" name="paid">
+        <label for="student">Student</label>
+        <input type="text" name="student">
         <input type="submit" value="Add Lesson">
     </form>
 </div>
